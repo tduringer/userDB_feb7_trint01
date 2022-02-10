@@ -4,9 +4,7 @@ import androidx.lifecycle.*
 import com.example.userdb_feb7_trint01.model.UserEntity
 import com.example.userdb_feb7_trint01.model.UserRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class UserViewModel(
     private val userRepository: UserRepository
@@ -25,7 +23,7 @@ class UserViewModel(
         }
     }
 
-    fun getAllUsers() {
+    private fun getAllUsers() {
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.getAllUsers().collect {
                 _users.postValue(it)

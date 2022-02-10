@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import com.example.userdb_feb7_trint01.databinding.FragmentAdduserBinding
 import com.example.userdb_feb7_trint01.model.UserDatabase
 import com.example.userdb_feb7_trint01.model.UserEntity
@@ -25,7 +23,7 @@ class AddUserFragment : Fragment() {
 
     private var _binding : FragmentAdduserBinding? = null
     private val binding : FragmentAdduserBinding get() = _binding!!
-    var currentId = 0
+    //var currentId = 0
     val TAG = "MainActivity"
 
     override fun onCreateView(
@@ -44,12 +42,13 @@ class AddUserFragment : Fragment() {
             btnSubmit.setOnClickListener {
                 val firstName = etFirstName.text.toString()
                 val lastName = etLastName.text.toString()
-                val newUser = UserEntity(currentId, firstName,lastName)
+                //val newUser = UserEntity(currentId, firstName,lastName)
+                val newUser = UserEntity(firstName = firstName, lastName = lastName)
                 viewModel.insertUser(newUser)
-                currentId++
+                //currentId++
 
                 Log.d(TAG, "btnSubmit Clicked")
-                Log.d(TAG, "currentId: $currentId")
+                //Log.d(TAG, "currentId: $currentId")
                 Log.d(TAG, "firstName: $firstName")
                 Log.d(TAG, "lastName: $lastName")
                 Log.d(TAG, "newUser: $newUser")
